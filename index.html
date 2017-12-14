@@ -1,137 +1,193 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8"> 
-	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
-	<link rel="stylesheet" href="twitter-bootstrap/bootstrap/css/bootstrap3.css">
-	<script src="twitter-bootstrap/bootstrap/js/jquery.baidu.js"></script>
-	<script src="js/jquery.form.js"></script>
-	<script src="twitter-bootstrap/bootstrap/js/bootstrap3.js"></script>
-	<style type="text/css">
-			.mask {
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.text {
+				text-align: center;
+				/*background: linear-gradient(left,red,blue,yellow);*/
+				/*background: -webkit-linear-gradient(left, rgb(0,0,0) , rgb(255,255,255),yellow);*/
+			}
+			
+			.textParent2 {
 				position: absolute;
-				top: 0px;
-				background-color: #000;
-				z-index: 1002;
-				left: 0px;
-				opacity: 0.4;
 			}
-	</style>
-</head>
-<body>
+			
+			body {
+				position: relative;
+			}
+		</style>
+		<script src="twitter-bootstrap/bootstrap/js/jquery.baidu.js"></script>
+	</head>
 
-<h2>创建模态框（Modal）</h2>
+	<body>
+		<textarea name="" rows="" cols="" style="display: none;">
+			英 语：I love you
+　　法 语：Je t’aime,Je t’adore
+　　德 语：Ich liebe Dich
+　　希 腊语：S’agapo
+　　犹 太语：Ani ohev otach(male or famale),Ani ohevet otcha (male or famale)
+　　匈 牙 利：Szeretlek
+　　爱 尔 兰：taim i’ngra leat
+　　爱 沙 尼 亚：Mina armastan sind
+　　芬 兰：Min rakastan sinua
+　　比 利 时佛兰芒语：IK zie u graag
+　　意 大 利语：ti amo,ti vogliobene
+　　拉 丁语：Te amo,Vos amo
+　　拉 托 维 亚：Es tevi Milu
+　　里 斯 本：lingo gramo-te bue’,chavalinha
+　　立 陶 宛：Tave Myliu
+　　马 其 顿：Te sakam
+　　马 尔 它：Inhobbok
+　　波 兰：Kocham Cie,Ja cie kocham
+　　葡 萄 牙：Eu amo-te
+　　罗 马 尼 亚：Te iu besc,Te Ador
+　　荷 兰：IK hou van jou
+　　捷 克：Miluji te
+　　丹 麦：Jeg elsker dig
+　　阿 尔 萨 斯：Ich hoan dich gear
+　　亚 美 尼 亚：Yes Kezi Seeroom yem
+　　巴 伐 利 亚：I mog di narrisch gern
+　　保 加 利 亚：ahs te obicham
+　　西 班 牙加泰隆语：T’estim
+　　克 罗 地 亚：Volim te
+　　阿 塞 疆 语：Men seni serivem
+　　孟 加 拉：Ami tomay bhalobashi
+　　缅 甸：chit pa de
+　　柬 埔 寨：Bong salang oun
+　　菲 律 宾：Mahal Kita,Iniibig Kita
+　　印 度 古 吉 拉 特 语：Hoon tane prem karun chuun
+　　北 印 度 语：main tumse pyar *n
+　　印 度 尼 西 亚：Saja kasih saudari
+　　日 本：Kimi o aishiteru Sukiyo
+　　朝 鲜：Tangshin-i cho-a-yo
+　　爪 哇 语：aku tresno marang sliromu
+　　老 挝：Khoi huk chau
+　　马 来 语：saya Cinta Mu
+　　蒙古语：bi chamd hairtai
+　　尼泊尔：Ma tumilai maya garchu,Ma timilai man parauchu
+　　波斯语：Tora dost daram
+　　他加禄语：Mahal kita
+　　南非语：Ek het jou lief Ek is lief vir jou
+　　加纳：Me do wo
+　　埃塞俄比亚阿姆哈雷地区：Ene ewedechalu(for ladies)，Ene ewedehalwe(for men)
+　　阿拉伯语：Ana Ahebak(to a male)
+　　Arabic Ana ahebek(to a female)
+　　瑞士德语：Ich li b Dich
+　　克里奥尔语：Mon *u
+　　豪萨语：Ina sonki
+　　肯尼亚班图语：Nigwedete
+　　马达加斯加语：tia*
+　　印度阿萨姆邦语：Moi tomak bhal pau
+　　南亚泰米尔语：Tamil n’an unnaik kathalikkinren
+　　印度泰卢固语：Neenu ninnu pra’mistu’nnanu
+　　泰国：Ch’an Rak Khun
+　　乌尔都语：Mein tumhay pyar karti hun(woman to man)，Mein tumhay pyar karta hun(man to woman)
+　　越南：Em ye’u anh(woman to man)
+　　Anh ye’u em(man to woman)
+　　新西兰毛里语：*ahai
+　　爱斯基摩：Nagligivaget
+　　格陵兰岛：Asavakit
+　　冰岛：e’g elska tig
+　　阿尔巴尼亚：T Dua Shume
+　　俄罗斯：Ya vas Iyublyu,Ya Tibia Lyublyu
+　　塞尔维亚：Volim Te
+　　斯洛文尼亚语：Ljubim te
+　　西班牙：Te amo,Tequiero
+　　瑞典：Jag lskar dig
+　　土尔其：Seni seviyorum
+　　乌克兰：ja vas kokhaju
+　　威尔士：Rwy’n dy garu di
+　　亚述语：ana bayanoo* male)
+　　高加索切尔克斯语：wise cas
+　　汉 语：我爱你
+		</textarea>
+		<div class="textParent">
 
-<!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-	开始演示模态框
-</button>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-	<div id="mask" class="mask" style="display: none;"></div>
-	<div class="modal-dialog">
-		<iframe id="iframe_display" name="iframe_display" style="display: none;"></iframe>  
-		<form action="aa.php" method="post" target="iframe_display">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					模态框（Modal）标题
-				</h4>
-			</div>
-			<div class="modal-body">
-				
-					<input type="" name="myname" id="myname" value="kangkang" />
-					
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
-				<input type="submit" value="提交保存" id="_submit" class="btn btn-primary" data-loading-text="正在提交"/>
-				<button  class="btn btn-primary" data-loading-text="正在提交" type="button" id="mySubmit"> 提交保存</button>
-			</div>
-		</div><!-- /.modal-content -->
-		</form>
-	</div><!-- /.modal -->
-</div>
+		</div>
+		<div class="textParent2">
 
-		
+		</div>
 		<script>
-			$("h2").click(function(){
-				console.log(4564)
-			})
-			function showMask() {
-				$("#mask").css("height", $(document).height());
-				$("#mask").css("width", $(document).width());
-				$("#mask").show();
+			var obj = {};
+			var valueText = $("textarea").val();
+			//console.log(valueText);
+			var arrChinese = valueText.split("：");
+			var arrChinese2 = [];
+			var arrOtherLanguage = [];
+			for(var i = 0; i < arrChinese.length; i++) {
+				arrChinese2.push(arrChinese[i].replace(/[^\u4e00-\u9fa5]/gi, ""));
+				var oneOfarrOtherLanguage = arrChinese[i].replace(/[\u4e00-\u9fa5]/gi, "").trim();
+				if(oneOfarrOtherLanguage.length > 0) {
+					arrOtherLanguage.push(oneOfarrOtherLanguage);
+				}
 			}
-			//隐藏遮罩层  
-			function hideMask() {
+			//console.log(arrOtherLanguage);
+			//console.log(arrChinese2);
+			for(var i in arrOtherLanguage) {
+				obj[arrChinese2[i]] = arrOtherLanguage[i];
+			}
+			console.log(obj);
+			var html = '';
+			var html2 = '';
+			for(var i in arrOtherLanguage) {
+				var a1 = Math.floor(Math.random() * 255 + 1);
+				var a2 = Math.floor(Math.random() * 255 + 1);
+				var a3 = Math.floor(Math.random() * 255 + 1);
+				var a4 = Math.floor(Math.random() * 255 + 1);
+				var a5 = Math.floor(Math.random() * 255 + 1);
+				var a6 = Math.floor(Math.random() * 255 + 1);
+				var a7 = Math.floor(Math.random() * 255 + 1);
+				var a8 = Math.floor(Math.random() * 255 + 1);
+				var a9 = Math.floor(Math.random() * 255 + 1);
+				html +=
+					`<div class="text" style="background:-webkit-linear-gradient(left, rgb(${a1},${a2},${a3}) , rgb(${a4},${a5},${a6}),rgb(${a7},${a8},${a9}))">${arrOtherLanguage[i]}</div>`;
+				html2 +=
+					`<div class="text" style="background:-webkit-linear-gradient(left, rgb(0,0,0) , rgb(255,255,255),rgb(0,0,0))">${arrOtherLanguage[i]}</div>`;
+			}
+			$(".textParent").html(html2);
 
-				$("#mask").hide();
-			}
-			$(function() {
-				
-				$("#_submit").click(function() {
-					$(this).button('loading').queue();
-					var me = this;
-					$.ajax({
-						type: 'post',
-						//url: 'aa.php',
-						//data: {
-							//myname: $("#myname").val()
-						//},
-						beforeSend: function() {
-							showMask();
-						},
-						success: function(json) {
-							console.log(json);
-							$(me).button('reset');
-							$(me).dequeue();
-							hideMask();
-						},
-						error: function(json) {
-							console.log(json);
-							console.log(me);
-							$(me).button('reset');
-							$(me).dequeue();
-							hideMask();
-							$(".close").click();
-						}
-					})
+			function mouseClick() {
+				var html = '';
+				var random = Math.floor(Math.random() * 68);
+				var randomLanguage = arrOtherLanguage[random];
+				var randomFontSize = Math.floor(Math.random() * 72 + 12) + 'px';
+				var a1 = Math.floor(Math.random() * 255 + 1);
+				var a2 = Math.floor(Math.random() * 255 + 1);
+				var a3 = Math.floor(Math.random() * 255 + 1);
+				var randomColor = "rgb(${a1},${a2},${a3})";
+				var randomLeft = Math.floor(Math.random() * 960) + 'px';
+				var randomTop = Math.floor(Math.random() * 540) + 'px';
+				var randomRotate = Math.floor(Math.random() * 360);
+				html +=
+					`<div class="randomLanguage" style="font-size:${randomFontSize};
+													color:rgb(${a1},${a2},${a3});
+													//background:rgb(${255 - a1},${255 - a2},${255 - a3});
+													text-shadow:5px 5px 5px rgb(${255 - a1},${255 - a2},${255 - a3});
+													-webkit-transform: rotate(${randomRotate}deg); /* Safari and Chrome */
+				">${randomLanguage}</div>`;
+				$(".textParent2").html(html).css({
+					left: randomLeft,
+					top: randomTop
 
 				});
-				
-				
-				$("#_submit").click(function(){
-					$(this).button('loading').queue();
-					var me = this;
-					$('form').ajaxSubmit({
-						type: 'post',
-						beforeSend: function() {
-							showMask();
-						},
-						success: function(json) {
-							console.log(json);
-							$(me).button('reset');
-							$(me).dequeue();
-							hideMask();
-						},
-						error: function(json) {
-							console.log("ajaxSubmit");
-							console.log(json);
-							console.log(me);
-							$(me).button('reset');
-							$(me).dequeue();
-							hideMask();
-							$(".close").click();
-						}
-					})
-				})
-				
+
+			}
+			$(document).click(function() {
+				mouseClick();
+				clearInterval(timer);
 			});
+			var timer = setInterval(function(){
+				$(document).click();
+			},50)
 		</script>
-</body>
+	</body>
+
 </html>

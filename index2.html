@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+	<link rel="stylesheet" href="twitter-bootstrap/bootstrap/css/bootstrap3.css">
+	<script src="twitter-bootstrap/bootstrap/js/jquery.baidu.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script src="twitter-bootstrap/bootstrap/js/bootstrap3.js"></script>
+	<style type="text/css">
+			.mask {
+				position: absolute;
+				top: 0px;
+				background-color: #000;
+				z-index: 1002;
+				left: 0px;
+				opacity: 0.4;
+			}
+	</style>
+</head>
+<body>
+
+<h2>创建模态框（Modal）</h2>
+
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	开始演示模态框
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+	<div id="mask" class="mask" style="display: none;"></div>
+	<div class="modal-dialog">
+		<iframe id="iframe_display" name="iframe_display" style="display: none;"></iframe>  
+		<form action="aa.php" method="post" target="iframe_display">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）标题
+				</h4>
+			</div>
+			<div class="modal-body">
+				
+					<input type="" name="myname" id="myname" value="kangkang" />
+					
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<input type="submit" value="提交保存" id="_submit" class="btn btn-primary" data-loading-text="正在提交"/>
+				<button  class="btn btn-primary" data-loading-text="正在提交" type="button" id="mySubmit"> 提交保存</button>
+			</div>
+		</div><!-- /.modal-content -->
+		</form>
+	</div><!-- /.modal -->
+</div>
+
+		
+		<script>
+			$("h2").click(function(){
+				console.log(4564)
+			})
+			function showMask() {
+				$("#mask").css("height", $(document).height());
+				$("#mask").css("width", $(document).width());
+				$("#mask").show();
+			}
+			//隐藏遮罩层  
+			function hideMask() {
+
+				$("#mask").hide();
+			}
+			$(function() {
+				
+				$("#_submit").click(function() {
+					$(this).button('loading').queue();
+					var me = this;
+					$.ajax({
+						type: 'post',
+						//url: 'aa.php',
+						//data: {
+							//myname: $("#myname").val()
+						//},
+						beforeSend: function() {
+							showMask();
+						},
+						success: function(json) {
+							console.log(json);
+							$(me).button('reset');
+							$(me).dequeue();
+							hideMask();
+						},
+						error: function(json) {
+							console.log(json);
+							console.log(me);
+							$(me).button('reset');
+							$(me).dequeue();
+							hideMask();
+							$(".close").click();
+						}
+					})
+
+				});
+				
+				
+				$("#_submit").click(function(){
+					$(this).button('loading').queue();
+					var me = this;
+					$('form').ajaxSubmit({
+						type: 'post',
+						beforeSend: function() {
+							showMask();
+						},
+						success: function(json) {
+							console.log(json);
+							$(me).button('reset');
+							$(me).dequeue();
+							hideMask();
+						},
+						error: function(json) {
+							console.log("ajaxSubmit");
+							console.log(json);
+							console.log(me);
+							$(me).button('reset');
+							$(me).dequeue();
+							hideMask();
+							$(".close").click();
+						}
+					})
+				})
+				
+			});
+		</script>
+</body>
+</html>
