@@ -3,11 +3,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		
 	</head>
 	<body>
+		<div id="myIp" style="font-size: 6rem;"></div>
 		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>  
 <script type="text/javascript">  
-document.write(returnCitySN["cip"]+','+returnCitySN["cname"])  
+document.getElementById("myIp").innerHTML = 
+'<div>'+returnCitySN.cip +'</div>'
++ '<div>'+returnCitySN.cid +'</div>' 
++ '<div>'+returnCitySN.cname +'</div>';
 </script>
 	</body>
 </html>
