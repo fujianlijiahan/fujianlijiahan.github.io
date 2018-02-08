@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 <body>
-$END$
+<input type="file" value="选择" id="sel"/>
+<div id="Content"></div>
+<script>
+    var fileMy = $("#sel");
+    fileMy.change(function() {
+        var reader = new FileReader();
+        reader.readAsText(this.files[0]);
+        reader.onload = function(e) {
+            //console.log(e);
+            //console.log(e.target.result);
+            //var html='<img src="'+e.target.result+'">';
+            var html = e.target.result;
+            //$("#Content").html(html);
+            var arr = html.match(/[a-z]+[\-\']?[a-z]*/ig);
+            var arr2 = [arr[0]];
+            for(var i=1;i<arr.length;i++){
+                if(arr.indexOf(arr[i]) == i) arr2.push(arr[i]);
+            }
+            var html = "";
+            for(var i in arr2){
+                html+=
+                        '<div>'+arr2[i]+'</div>';
+            }
+            $("#Content").html(html);
+        }
+
+    })
+</script>
 </body>
 </html>
