@@ -17,9 +17,9 @@
             //console.log(e);
             //console.log(e.target.result);
             //var html='<img src="'+e.target.result+'">';
-            var html = e.target.result;
+            var str = e.target.result;
             //$("#Content").html(html);
-            var arr = html.match(/[a-z]+[\-\']?[a-z]*/ig);
+            var arr = str.match(/[a-z]+[\-\']?[a-z]*/ig);
             var arr2 = [arr[0]];
             for(var i=1;i<arr.length;i++){
                 if(arr.indexOf(arr[i]) == i) arr2.push(arr[i]);
